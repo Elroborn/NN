@@ -107,6 +107,7 @@ def backward(parameters,caches,al,y):
         grades["dz"+str(i)] = da_temp * tanh_prime(caches["z"][i])
         grades["dw"+str(i)] = grades["dz"+str(i)].dot(caches["a"][i-1].T)/m
         grades["db"+str(i)] = np.sum(grades["dz"+str(i)],axis = 1,keepdims = True) /m
+    
     return grades
 
 # 就是把其所有的权重以及偏执都更新一下
@@ -149,4 +150,3 @@ for i in range(6000):
 #预测时候不进行dropout
 caches,al = forward(test_x, parameters,keep_prob=1)
 print(np.mean(np.argmax(al,axis = 0)==np.argmax(test_y,axis = 0)))
-plt.show()
