@@ -112,6 +112,7 @@ parameters = init_parameters([28*28,16,8,16,10])
 v = initialize_velocity(parameters)
 batch_size = 64
 cost = []
+
 for i in range(500):
     train_x,train_y,batches = NN_utils.get_bathces(train_x, train_y, batch_size)
     for batch in batches:
